@@ -22,9 +22,7 @@ class TodosController < ApplicationController
 
 
 	def update
-		todo = Todo.find_by id: params[:id].to_i
-		todo.isCompleted = !todo.isCompleted
-		todo.save
+		Todo.find(params[:commit]).update(isCompleted:params[:isCompleted])
 
 		redirect_to root_path
 	end

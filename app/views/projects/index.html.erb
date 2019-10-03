@@ -1,57 +1,72 @@
 <body>
-<div class = "header">
-	<h1 class = "title"> Задачи</h1>
 
-	<div class="obla4ki">
-		<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-zornet.png" alt="" class="obla4ki1">
-		<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-rundsaxcv.png" alt="" class="obla4ki2">
-		<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-kisaxm.png" alt="" class="obla4ki3">
-		<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-karunfsa.png" alt="" class="obla4ki4">
-		<img src="http://pngimg.com/uploads/cloud/cloud_PNG6.png" alt="" class="obla4ki5">
-	</div>
-	<%= image_submit_tag "addTodoIcon.png", :class => "btn_plus" %>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container">
-	<div class="row">
-		<% @projects.each do |project| %>
-			<div class=" col-lg-4 col-md-6 col-xs-12 сol-sm-12">
-				<div class="projects_block">
-					<%= content_tag(:h3, project.title) %><hr>
-					<% project.todos.sort.each do |todo|%>
-						<div class="todos">
-							<%= form_with scope: :todos, url: todos_path, local: true, class: "projects_form" do |form| %>
-								<%= check_box_tag(todo.id,  todo.isCompleted)%>
-								<%= hidden_field_tag(:isCompleted, !todo.isCompleted)%>
-								<%= submit_tag(todo.id, class: "submit", :style => "display: none", id: "submit_"+todo.id.to_s) %>
-								<%= content_tag(:label, todo.text, id:"todo_text_"+todo.id.to_s, class: "todo_text", for: todo.id) %>
-							<%end%>
-						</div>
-					<%end%>
+	<div id="create_form" style="display: none">
+		<div style="background: white; padding: 0 20px; width: 500px">
+			<h1 style="text-align: center">Новая задача</h1>
+			<hr>
+			<%= form_with scope: :todo, url: todos_path, local: true, id: :todo_form do |form|%>
+				<div>
+					<%= text_field_tag :text %>
 				</div>
-			</div>
-		<%end%>
+				<div>
+					<%= select_tag :project_id, options_for_select(@projects.map { |p| [p.title, p.id] }) %>
+				</div>
+				<div>
+					<a class="button_links" style="background: #ccc" href="#" id="close_crete_form">ОТМЕНА</a>
+					<a class="button_links" style="background: #3aafda" href="javascript: $('#todo_form').submit();">OK</a>
+				</div>
+			<% end %>
+		</div>
 	</div>
-</div>
 
 
+	<div class = "header">
+		<h1 class = "title"> Задачи</h1>
 
-<div class="formDiv" style="display:none">
-	<h3> Новая задача </h3>
-	<%= form_for @todo, url: {controller: "todos", action: "create"}, html: {:id => "new_todo_form"} do |f| %>
+		<div class="obla4ki">
+			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-zornet.png" alt="" class="obla4ki1">
+			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-rundsaxcv.png" alt="" class="obla4ki2">
+			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-kisaxm.png" alt="" class="obla4ki3">
+			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-karunfsa.png" alt="" class="obla4ki4">
+			<img src="http://pngimg.com/uploads/cloud/cloud_PNG6.png" alt="" class="obla4ki5">
+		</div>
+		<%= image_submit_tag "addTodoIcon.png", :class => "btn_plus" %>
+	</div>
 
-		<%= f.text_field :text, :placeholder => "Название задачи..." %>
-		<%= f.collection_select(:project_id, Project.all, :id, :title) %>
-		<br>
-		<%= link_to "ОТМЕНА", "", :class => "btn_cancel" %>
-		<%= link_to "OK", "", :class => "btn_ok" %>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<% @projects.each do |project| %>
+				<div class=" col-lg-4 col-md-6 col-xs-12 сol-sm-12">
+					<div class="projects_block">
+						<%= content_tag(:h3, project.title) %><hr>
+						<% project.todos.sort.each do |todo|%>
+							<div class="todos">
+								<%= form_with scope: :todos, url: todos_update_path, local: true, class: "projects_form" do |form| %>
+									<%= check_box_tag(todo.id,  todo.isCompleted)%>
+									<%= hidden_field_tag(:isCompleted, !todo.isCompleted)%>
+									<%= submit_tag(todo.id, class: "submit", :style => "display: none", id: "submit_"+todo.id.to_s) %>
+									<%= content_tag(:label, todo.text, id:"todo_text_"+todo.id.to_s, class: "todo_text", for: todo.id) %>
+								<%end%>
+							</div>
+						<%end%>
+					</div>
+				</div>
+			<%end%>
+		</div>
+	</div>
+
+
+	<script>
+<% @to_mark = [] %>
+<% @projects.each do |p| %>
+	<% p.todos.each do |todo| %>
+		<% if todo.isCompleted then @to_mark.push todo.id end%>
+		<% end %>
 	<% end %>
-</div>
-
-<div class="fixed"> I wana work in OblakoGroup®</div>
-</body>
+	<%= "var to_mark = " + @to_mark.to_s %>
+	</script>
