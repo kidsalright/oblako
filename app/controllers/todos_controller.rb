@@ -1,45 +1,35 @@
 class TodosController < ApplicationController
-  def index
-    @todos = Todo.all
-  end
+	def index
+		@todos = Todo.all
+	end
 
-  def show
-	  @todos = Todo.all
-	redirect_to root_path
-  end
+	def show
+		@todos = Todo.all
+		redirect_to root_path
+	end
 
-  def new
-    @todo = Todo.new
-  end
+	def new
+		@todo = Todo.new
+	end
 
-  def create
-    @todo = Todo.new(todo_params)
+	def create
 
-    respond_to do |format|
-      if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
-        format.json { render :show, status: :created, location: @todo }
-      else
-        format.html { render :new }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+		todo = Todo.new text: params[:text], project_id: params[:project_id]
+		todo.isCompleted = false
+		todo.save
+		redirect_to root_path
+	end
 
-  def update
-    respond_to do |format|
-      if @todo.update(todo_params)
-        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @todo }
-      else
-        format.html { render :edit }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  private
-    def todo_params
-      params.require(:todo).permit(:text, :isCompleted, :project_id)
-    end
+	def update
+		todo = Todo.find_by id: params[:id].to_i
+		todo.isCompleted = !todo.isCompleted
+		todo.save
+
+		redirect_to root_path
+	end
+	private
+	def todo_params
+		params.require(:todo).permit(:text, :isCompleted, :project_id)
+	end
 end
