@@ -1,14 +1,15 @@
 <div class = "header">
-	<h1>Задачи</h1>
+	<h1 class = "title"> Задачи</h1>
 	<%= image_submit_tag "addTodoIcon.png", :class => "btn_plus" %>
 </div>
 
+
 <div class = "case">
-<% @projects.each do |project| %>
-	<h3><%= project.title %></h3>
-	<% project.todos.each do |todo| %>
-		<br><%= todo.text %>
-<% end %>
+	<% @projects.each do |project| %>
+		<h3><%= project.title %></h3>
+		<% project.todos.each do |todo| %>
+			<br><%= todo.text %>
+	<% end %>
 <% end %>
 </div>
 
