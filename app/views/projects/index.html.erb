@@ -1,24 +1,23 @@
-<h1>Задачи</h1>
+<div class = "header">
+	<h1>Задачи</h1>
+	<%= image_submit_tag "addTodoIcon.png", :class => "btn_plus" %>
+</div>
 
-<%= image_submit_tag "addTodoIcon.png", :class => "btn_plus" %>
-
+<div class = "case">
 <% @projects.each do |project| %>
 	<h3><%= project.title %></h3>
-	<ul>
-		<% project.todos.each do |todo| %>
-			<li><%= todo.text %></li>
-		<% end %>
-	</ul>
+	<% project.todos.each do |todo| %>
+		<br><%= todo.text %>
 <% end %>
+<% end %>
+</div>
 
 <div class="formDiv" style="display:none">
 	<h3> Новая задача </h3>
 	<%= form_for @todo, url: {controller: "todos", action: "create"}, html: {:id => "new_todo_form"} do |f| %>
 
-		<%= f.text_field :text, :placeholder => "Название задачи..." %><br>
+		<%= f.text_field :text, :placeholder => "Название задачи..." %>
 		<%= f.collection_select(:project_id, Project.all, :id, :title) %>
-		<%= @projects[0].title %>
-		<!-- как то надо вместо нуля порядок проектов подставлять -->
 		<br>
 		<%= link_to "ОТМЕНА", "", :class => "btn_cancel" %>
 		<%= link_to "OK", "", :class => "btn_ok" %>
