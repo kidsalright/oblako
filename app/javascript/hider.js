@@ -10,6 +10,28 @@ $(document).ready(function() {
 	$(".btn_ok").click(function(event) {
 		event.preventDefault();
 		$("#new_todo_form").submit();
+
+		let fuck_uglifier = $('#content input');
+		let has_init = false;
+
+		fuck_uglifier.iCheck({
+			checkboxClass: 'icheckbox_square-blue',
+			radioClass: 'iradio_square-blue',
+		});
+
+		fuck_uglifier.on('ifChecked', function(event){
+			$(event.target).parent().next().css('text-decoration-line', 'line-through');
+			if (has_init) {
+				$(event.target).parent().parent().submit();
+			}
+		});
+
+		fuck_uglifier.on('ifUnchecked', function (event) {
+			$(event.target).parent().next().css('text-decoration-line', 'initial');
+			if (has_init) {
+				$(event.target).parent().parent().submit();
+			}
+		});
 	})
 });
 
