@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap/scss/bootstrap
+ *= require 'vendor/select2.min.css'
  */
 
 @font-face {
@@ -46,6 +48,7 @@
 .header .title {
 	position: absolute;
 	width: 100%;
+	top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	color: white;
@@ -59,7 +62,27 @@
 	right: 40px;
 	float:right;
 }
+
 body {
 	background-color: #ECF0F1;
 }
 
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+
+	height: 40px !important;
+
+	span {
+
+		line-height: 40px !important;
+
+		text-align: left;
+
+	}
+
+}
+
+.select2-selection {
+
+	border-radius: 0 !important;
+
+}
