@@ -28,4 +28,7 @@ $(document).ready(function() {
 		$('.background').toggle();
 	});
 
+	$("#selection").select2({
+		minimumResultsForSearch: -1
+	});
 });
