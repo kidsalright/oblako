@@ -8,7 +8,6 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("icheck")
-require("select2.min")
 require("hider")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
