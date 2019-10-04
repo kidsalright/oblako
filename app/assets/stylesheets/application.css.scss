@@ -71,17 +71,17 @@
 .todos {
 	padding-bottom: 10px;
 	font-family: 'OpenSans-Light';
-	margin: 20px 30px;
+	margin: 10px 25px;
 	font-size: 15px;
 }
 
 h3 {
 	padding: 15px 15px 0;
-	font-weight: 600;
-	font-family: 'OpenSans-Semibold';
+	font-weight: 60;
+	font-family: 'OpenSans-Regular';
 	text-transform: uppercase;
 	letter-spacing: 0.1px;
-	font-size: 8px;
+	font-size: 5px;
 }
 
 .obla4ki {
@@ -91,10 +91,6 @@ h3 {
 	padding-bottom: 50%;
 	padding: 0px;
 	background-size: cover;
-}
-.headerobl {
-	position: relative;
-	padding:28px;
 }
 .obla4ki img {
 	width: 100px;
@@ -192,6 +188,7 @@ h3 {
 	top: 50%; left: 50%;
 	transform: translate(-50%,-50%);
 	width: 390px;
+	text-align: center;
 	height: 220px;
 	background-color: white;
 	padding: 15px;
@@ -205,10 +202,6 @@ h3 {
 	border-width: 1px;
 	border-style: solid;
 	border-color: #A4A4A4;
-}
-
-.project_selection {
-	width: 100%;
 }
 
 .link_close, .link_create {
@@ -245,4 +238,3 @@ h3 {
 	text-shadow: 0 1px rgba(0,0,0,0.1);
 	background-color: #95D8E1;
 }
-

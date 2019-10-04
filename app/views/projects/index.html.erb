@@ -1,49 +1,51 @@
-<body>
-	<div class="background">
-		<div class="menu">
-			<%= content_tag(:h3, "новая задача") %><hr>
-			<%= form_with scope: :todos, url: todos_create_path, local: true, id:"create_todo_form" do |form| %>
-				<%= text_field(:todo, :text, :placeholder => ' Название задачи...',:class => 'todo_name_input')%>
-				<%= select_tag("selected_project", options_from_collection_for_select(@projects, :id, :title, "Категория"), :id => 'selection', :class => 'selection')%>
-				<%= link_to('отмена', '#', :id => 'link_close', :class => 'link_close')%>
-				<%= link_to('ок', '#', :id => 'link_create', :class => 'link_create')%>
-			<%end%>
+<!Doctype html>
+<html>
+	<body>
+		<div class="background">
+			<div class="menu">
+				<%= content_tag(:h3, "новая задача") %><hr>
+				<%= form_with scope: :todos, url: todos_create_path, local: true, id:"create_todo_form" do |form| %>
+					<%= text_field(:todo, :text, :placeholder => ' Название задачи...',:class => 'todo_name_input')%>
+					<%= select_tag("selected_project", options_from_collection_for_select(@projects, :id, :title, "Категория"), :id => 'selection', :class => 'selection')%>
+					<%= link_to('отмена', '#', :id => 'link_close', :class => 'link_close')%>
+					<%= link_to('ок', '#', :id => 'link_create', :class => 'link_create')%>
+				<%end%>
+			</div>
 		</div>
-	</div>
-	<div class = "header">
-		<h1 class = "title"> Задачи</h1>
-		<div class="obla4ki">
-			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-zornet.png" alt="" class="obla4ki1">
-			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-rundsaxcv.png" alt="" class="obla4ki2">
-			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-kisaxm.png" alt="" class="obla4ki3">
-			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-karunfsa.png" alt="" class="obla4ki4">
-			<img src="http://pngimg.com/uploads/cloud/cloud_PNG6.png" alt="" class="obla4ki5">
+		<div class = "header">
+			<h1 class = "title"> Задачи</h1>
+			<div class="obla4ki">
+				<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-zornet.png" alt="" class="obla4ki1">
+				<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-rundsaxcv.png" alt="" class="obla4ki2">
+				<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-kisaxm.png" alt="" class="obla4ki3">
+				<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-karunfsa.png" alt="" class="obla4ki4">
+				<img src="http://pngimg.com/uploads/cloud/cloud_PNG6.png" alt="" class="obla4ki5">
+			</div>
+			<%= link_to(image_tag('addTodoIcon.png'), '#', :id => 'todo_icon', :class => 'btn_plus')%>
 		</div>
-		<%= link_to(image_tag('addTodoIcon.png'), '#', :id => 'todo_icon', :class => 'btn_plus')%>
-	</div>
-	<br>
-	<br>
-	<br>
-	<div class="container">
-		<div class="row">
-			<% @projects.each do |project| %>
-				<div class=" col-lg-4 col-md-6 col-xs-12 сol-sm-12">
-					<div class="projects_block">
-						<%= content_tag(:h3, project.title) %><hr>
-						<% project.todos.sort.each do |todo|%>
-							<div class="todos">
-								<%= form_with scope: :todos, url: todos_update_path, local: true, class: "projects_form" do |form| %>
-									<%= check_box_tag(todo.id,  todo.isCompleted)%>
-									<%= hidden_field_tag(:isCompleted, !todo.isCompleted)%>
-									<%= submit_tag(todo.id, class: "submit", :style => "display: none", id: "submit_"+todo.id.to_s) %>
-									<%= content_tag(:label, todo.text, id:"todo_text_"+todo.id.to_s, class: "todo_text", for: todo.id) %>
-								<%end%>
-							</div>
-						<%end%>
+		<br>
+		<br>
+		<div class="container">
+			<div class="row">
+				<% @projects.each do |project| %>
+					<div class=" col-lg-4 col-md-6 col-xs-12 сol-sm-12">
+						<div class="projects_block">
+							<%= content_tag(:h3, project.title) %><hr>
+							<% project.todos.sort.each do |todo|%>
+								<div class="todos">
+									<%= form_with scope: :todos, url: todos_update_path, local: true, class: "projects_form" do |form| %>
+										<%= check_box_tag(todo.id,  todo.isCompleted)%>
+										<%= hidden_field_tag(:isCompleted, !todo.isCompleted)%>
+										<%= submit_tag(todo.id, class: "submit", :style => "display: none", id: "submit_"+todo.id.to_s) %>
+										<%= content_tag(:label, todo.text, id:"todo_text_"+todo.id.to_s, class: "todo_text", for: todo.id) %>
+									<%end%>
+								</div>
+							<%end%>
+						</div>
 					</div>
-				</div>
-			<%end%>
+				<%end%>
+			</div>
 		</div>
-	</div>
-</body>
-<div class="fixed"> I really wanna work in OblakoGroup®</div>
+		<div class="fixed"> I really wanna work in OblakoGroup®</div>
+	</body>
+</html>
