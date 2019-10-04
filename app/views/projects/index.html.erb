@@ -1,5 +1,15 @@
 <body>
-
+	<div class="background">
+		<div class="menu">
+			<%= content_tag(:h3, "новая задача") %><hr>
+			<%= form_with scope: :todos, url: todos_create_path, local: true, id:"create_todo_form" do |form| %>
+				<%= text_field(:todo, :text, :placeholder => ' Название задачи...',:class => 'todo_name_input')%>
+				<%= select_tag("selected_project", options_from_collection_for_select(@projects, :id, :title, "Категория"), :id => 'selection', :class => 'selection')%>
+				<%= link_to('отмена', '#', :id => 'link_close', :class => 'link_close')%>
+				<%= link_to('ок', '#', :id => 'link_create', :class => 'link_create')%>
+			<%end%>
+		</div>
+	</div>
 	<div class = "header">
 		<h1 class = "title"> Задачи</h1>
 		<div class="obla4ki">
@@ -9,11 +19,8 @@
 			<img src="http://zornet.ru/ABVUN/sarunolas/Gamilsatun/cloud-karunfsa.png" alt="" class="obla4ki4">
 			<img src="http://pngimg.com/uploads/cloud/cloud_PNG6.png" alt="" class="obla4ki5">
 		</div>
-		<%= image_submit_tag "addTodoIcon.png", :class => "btn_plus" %>
+		<%= link_to(image_tag('addTodoIcon.png'), '#', :id => 'todo_icon', :class => 'btn_plus')%>
 	</div>
-
-	<br>
-	<br>
 	<br>
 	<br>
 	<br>
@@ -39,3 +46,4 @@
 		</div>
 	</div>
 </body>
+<div class="fixed"> I really wanna work in OblakoGroup®</div>

@@ -9,7 +9,6 @@ require("channels")
 require("jquery")
 require("bootstrap/dist/js/bootstrap")
 require("icheck")
-require("select2.min")
 require("hider")
 
 // Uncomment to copy all static images under ../images to the output folder and reference

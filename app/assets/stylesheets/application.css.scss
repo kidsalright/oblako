@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  *= require bootstrap/scss/bootstrap
- *= require 'vendor/select2'
  *= require 'vendor/blue'
  */
 
@@ -62,10 +61,6 @@
 	top: 24px;
 	right: 40px;
 	float:right;
-}
-
-.case {
-	top: 50px;
 }
 
 .projects_block {
@@ -143,6 +138,7 @@ h3 {
 		transform: translateX(-2500%)
 	}
 }
+
 .obla4ki1 {
 	-webkit-animation: animobla4ki 30s infinite linear;
 	-moz-animation: animobla4ki 30s infinite linear;
@@ -178,56 +174,75 @@ h3 {
 	color: #DCF2F5;
 }
 
-.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
-
-	height: 40px !important;
-
-	span {
-
-		line-height: 40px !important;
-
-		text-align: left;
-
-	}
-
-}
-
-.select2-selection {
-
-	border-radius: 0 !important;
-
-}
-
-.checkbox {
-	float:left;
-	width:22px;
-}
-
 .checked {
 	text-decoration: line-through;
 }
 
-.create_form{
-	position: fixed;
+.background {
+	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.51);
-	top: 0;
-	left: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.create_form .text{
-	line-height: 40px;
-	width: 100%;
-	margin-bottom: 20px;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 99;
+	display: none;
 }
 
-.button_links{
-	display: inline-block;
-	width: 49%;
-	text-align: center;
-	padding: 15px 0;
-	margin: 10px 0;
+.menu {
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+	width: 390px;
+	height: 220px;
+	background-color: white;
+	padding: 15px;
 }
+
+.todo_name_input {
+	width: 100%;
+	height: 40px;
+	margin-bottom: 1em;
+	padding-left: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #A4A4A4;
+}
+
+.project_selection {
+	width: 100%;
+}
+
+.link_close, .link_create {
+	display: inline-block;
+	width: 140px;
+	height: 40px;
+	background-color: #89A3A9;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	text-transform: uppercase;
+	font-family: 'OpenSans-Light';
+	padding: 12px;
+	text-shadow: 1px 1px 1px silver,
+	-1px 1px 1px silver;
+	color: white;
+	transition: all .5s;
+}
+
+.link_close:hover, .link_create:hover {
+	text-shadow: -1px -1px 1px silver,
+	1px -1px 1px silver;
+	color: white;
+	text-decoration: none;
+}
+
+.link_create {  
+	float: right;
+	color: white;
+	text-shadow: 2px 2px 2px black,
+	-2px 2px 2px black;
+	color: white;
+	transition: all .5s;
+	text-shadow: 0 1px rgba(0,0,0,0.1);
+	background-color: #95D8E1;
+}
+
