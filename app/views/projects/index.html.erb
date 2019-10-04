@@ -33,7 +33,9 @@
 							<%= content_tag(:h3, project.title) %><hr>
 							<% project.todos.sort.each do |todo|%>
 								<div class="todos">
-									<%= form_with scope: :todos, url: todos_update_path, local: true, class: "projects_form" do |form| %>
+									<body id="bootstrap-overrides">
+										<%= form_with scope: :todos, url: todos_update_path, local: true, class: "projects_form" do |form| %>
+										</body>
 										<%= check_box_tag(todo.id,  todo.isCompleted)%>
 										<%= hidden_field_tag(:isCompleted, !todo.isCompleted)%>
 										<%= submit_tag(todo.id, class: "submit", :style => "display: none", id: "submit_"+todo.id.to_s) %>

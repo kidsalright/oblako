@@ -238,3 +238,8 @@ h3 {
 	text-shadow: 0 1px rgba(0,0,0,0.1);
 	background-color: #95D8E1;
 }
+
+#bootstrap-overrides label { 
+	display: contents;
+}
+
