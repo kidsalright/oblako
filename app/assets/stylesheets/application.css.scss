@@ -12,8 +12,9 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap/scss/bootstrap
  *= require 'vendor/blue'
+ *= require 'vendor/bootstrap'
+ *= require 'select2.css'
  */
 
 @font-face {
@@ -48,7 +49,6 @@
 .header .title {
 	position: absolute;
 	width: 100%;
-	top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	color: white;
@@ -58,12 +58,12 @@
 
 .header .btn_plus{
 	position: absolute;
-	top: 24px;
+	top: 21px;
 	right: 40px;
 	float:right;
 }
 
-.projects_block {
+.allprojects {
 	background-color: white;
 	box-shadow: 6px 6px 26px -4px rgba(23,68,92,1);
 }
@@ -74,14 +74,19 @@
 	margin: 10px 25px;
 	font-size: 15px;
 }
-
+.tittles {
+	padding: 5px 20px 0;
+}
 h3 {
-	padding: 15px 15px 0;
-	font-weight: 60;
 	font-family: 'OpenSans-Regular';
 	text-transform: uppercase;
 	letter-spacing: 0.1px;
-	font-size: 5px;
+	font-size: 15px;
+
+}
+
+.menu {
+	top: 50px;
 }
 
 .obla4ki {
@@ -167,6 +172,7 @@ h3 {
 	bottom: 50px;
 	right: 50px;
 	width: 100px;
+	font-size: 10px;
 	color: #DCF2F5;
 }
 
@@ -222,8 +228,8 @@ h3 {
 }
 
 .link_close:hover, .link_create:hover {
-	text-shadow: -1px -1px 1px silver,
-	1px -1px 1px silver;
+	text-shadow: -2px -2px 2px silver,
+	2px -2px 2px silver;
 	color: white;
 	text-decoration: none;
 }
@@ -231,10 +237,29 @@ h3 {
 .link_create {  
 	float: right;
 	color: white;
-	text-shadow: 2px 2px 2px black,
-	-2px 2px 2px black;
+	text-shadow: 2px 2px 2px silver,
+	-2px 2px 2px silver;
 	color: white;
 	transition: all .5s;
-	text-shadow: 0 1px rgba(0,0,0,0.1);
 	background-color: #95D8E1;
+}
+
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+
+	height: 40px !important;
+
+	span {
+
+		line-height: 40px !important;
+
+		text-align: left;
+
+	}
+
+}
+
+.select2-selection {
+
+	border-radius: 0 !important;
+
 }

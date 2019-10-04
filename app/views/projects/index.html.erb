@@ -23,14 +23,15 @@
 			</div>
 			<%= link_to(image_tag('addTodoIcon.png'), '#', :id => 'todo_icon', :class => 'btn_plus')%>
 		</div>
-		<br>	
 		<br>
 		<div class="container">
 			<div class="row">
 				<% @projects.each do |project| %>
 					<div class=" col-lg-4 col-md-6 col-xs-12 сol-sm-12">
-						<div class="projects_block">
-							<%= content_tag(:h3, project.title) %><hr>
+						<div class="allprojects">
+							<div class="tittles">
+								<%= content_tag(:h3 , project.title) %><hr>
+							</div>
 							<% project.todos.sort.each do |todo|%>
 								<div class="todos">
 									<%= form_with scope: :todos, url: todos_update_path, local: true, class: "projects_form" do |form| %>
