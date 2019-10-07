@@ -20,28 +20,23 @@
 	</div>
 	<%= link_to(image_tag('addTodoIcon.png'), '#', :id => 'btn_plus', :class => 'btn_plus')%>
 </div>
-<br>
-<div class="container">
-	<div class="row">
-		<% @projects.each do |project| %>
-			<div class=" col-lg-4 col-md-6 col-xs-12" style="padding: 10px">
-				<div class="projects_block">
-					<%= content_tag(:h3, project.title) %><hr>
-					<% project.todos.sort.each do |todo|%>
-						<div class="todos">
-							<body id="bootstrap-overrides">
-								<%= form_with scope: :todos, url: todos_update_path, local: true, class: "projects_form" do |form| %>
-								</body>
-								<%= check_box_tag(todo.id,  todo.isCompleted)%>
-								<%= hidden_field_tag(:isCompleted, !todo.isCompleted)%>
-								<%= submit_tag(todo.id, class: "submit", :style => "display: none", id: "submit_"+todo.id.to_s) %>
-								<%= content_tag(:label, todo.text, id:"todo_text_"+todo.id.to_s, class: "todo_text", for: todo.id) %>
-							<%end%>
-						</div>
-					<%end%>
-				</div>
+<div class="container-fluid">
+	<% @projects.each do |project| %>
+		<div class=" col-lg-4 col-md-6 col-xs-12" style="padding: 15px">
+			<div class="projects_block">
+				<%= content_tag(:h3, project.title) %><hr>
+				<% project.todos.sort.each do |todo|%>
+					<div class="todos">
+						<%= form_with scope: :todos, url: todos_update_path, local: true, class: "projects_form" do |form| %>
+							<%= check_box_tag(todo.id,  todo.isCompleted)%>
+							<%= hidden_field_tag(:isCompleted, !todo.isCompleted)%>
+							<%= submit_tag(todo.id, class: "submit", :style => "display: none", id: "submit_"+todo.id.to_s) %>
+							<%= content_tag(:label, todo.text, id:"todo_text_"+todo.id.to_s, class: "todo_text", for: todo.id) %>
+						<%end%>
+					</div>
+				<%end%>
 			</div>
-		<%end%>
-	</div>
+		</div>
+	<%end%>
 </div>
 <div class="fixed"> I really wanna work in OblakoGroup®</div>
