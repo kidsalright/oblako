@@ -24,11 +24,8 @@ $(document).ready(function() {
 		$("#create_todo_form").submit();
 	});
 
-	$('#todo_icon, #link_close').click(function(event){
+	$('#btn_plus, #link_close').click(function(event){
 		$('.background').toggle();
 	});
 
-	$("#selection").select2({
-		minimumResultsForSearch: -1
-	});
 });

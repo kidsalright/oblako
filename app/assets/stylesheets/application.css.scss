@@ -12,8 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap/scss/bootstrap
  *= require 'vendor/blue'
+ *= require 'vendor/bootstrap/css/bootstrap'
  */
 
 @font-face {
@@ -48,7 +48,6 @@
 .header .title {
 	position: absolute;
 	width: 100%;
-	top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	color: white;
@@ -81,7 +80,7 @@ h3 {
 	font-family: 'OpenSans-Regular';
 	text-transform: uppercase;
 	letter-spacing: 0.1px;
-	font-size: 5px;
+	font-size: 15px;
 }
 
 .obla4ki {
@@ -93,9 +92,9 @@ h3 {
 	background-size: cover;
 }
 .obla4ki img {
-	width: 100px;
+	width: 110px;
 	position: relative;
-	right: -70%;
+	right: -75%;
 	-webkit-user-select: none;  
 	-moz-user-select: none;  
 	-ms-user-select: none;
@@ -174,6 +173,14 @@ h3 {
 	text-decoration: line-through;
 }
 
+h2 {
+	font-weight: 60;
+	font-family: 'OpenSans-Regular';
+	text-transform: uppercase;
+	letter-spacing: 0.1px;
+	font-size: 15px;
+}
+
 .background {
 	position: absolute;
 	width: 100%;
@@ -194,7 +201,7 @@ h3 {
 	padding: 15px;
 }
 
-.todo_name_input {
+.nameinput {
 	width: 100%;
 	height: 40px;
 	margin-bottom: 1em;
@@ -231,15 +238,9 @@ h3 {
 .link_create {  
 	float: right;
 	color: white;
-	text-shadow: 2px 2px 2px black,
-	-2px 2px 2px black;
+	text-shadow: 2px 2px 2px silver,
+	-2px 2px 2px silver;
 	color: white;
 	transition: all .5s;
-	text-shadow: 0 1px rgba(0,0,0,0.1);
 	background-color: #95D8E1;
 }
-
-#bootstrap-overrides label { 
-	display: contents;
-}
-
