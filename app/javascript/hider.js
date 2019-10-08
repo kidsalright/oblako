@@ -27,5 +27,4 @@ $(document).ready(function() {
 	$('#btn_plus, #link_close').click(function(event){
 		$('.background').toggle();
 	});
-
 });

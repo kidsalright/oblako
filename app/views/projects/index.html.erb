@@ -1,11 +1,11 @@
 <div class="background">
 	<div class="menu">
-		<%= content_tag(:h2, "новая задача") %><hr>
+		<%= content_tag(:h2, "НОВАЯ ЗАДАЧА") %><hr>
 		<%= form_with scope: :todos, url: todos_create_path, local: true, id:"create_todo_form" do |form| %>
 			<%= text_field(:todo, :text, :placeholder => ' Название задачи...',:class => 'nameinput')%>
-			<%= select_tag("selected_project", options_from_collection_for_select(@projects, :id, :title, "Категория"), :id => 'selection', :class => 'selection')%>
-			<%= link_to('отмена', '#', :id => 'link_close', :class => 'link_close')%>
-			<%= link_to('ок', '#', :id => 'link_create', :class => 'link_create')%>
+			<%= select_tag("selected_project", options_from_collection_for_select(@projects, :id, :title, "Категория"), :class => 'selection')%>
+			<%= link_to('ОТМЕНА', '#', :id => 'link_close', :class => 'link_close')%>
+			<%= link_to('ОК', '#', :id => 'link_create', :class => 'link_create')%>
 		<%end%>
 	</div>
 </div>
@@ -22,7 +22,7 @@
 </div>
 <div class="container-fluid">
 	<% @projects.each do |project| %>
-		<div class=" col-lg-4 col-md-6 col-xs-12" style="padding: 15px">
+		<div class=" col-lg-4 col-md-6 col-xs-12" style="padding: 20px">
 			<div class="projects_block">
 				<%= content_tag(:h3, project.title) %><hr>
 				<% project.todos.sort.each do |todo|%>
