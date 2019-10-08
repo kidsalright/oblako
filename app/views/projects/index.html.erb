@@ -3,7 +3,7 @@
 		<%= content_tag(:h2, "НОВАЯ ЗАДАЧА") %><hr>
 		<%= form_with scope: :todos, url: todos_create_path, local: true, id:"create_todo_form" do |form| %>
 			<%= text_field(:todo, :text, :placeholder => ' Название задачи...',:class => 'nameinput')%>
-			<%= select_tag("selected_project", options_from_collection_for_select(@projects, :id, :title, "Категория"), :class => 'selection')%>
+			<%= select_tag("selected_project", options_from_collection_for_select(@projects, :id, :title), :class => 'selection')%>
 			<%= link_to('ОТМЕНА', '#', :id => 'link_close', :class => 'link_close')%>
 			<%= link_to('ОК', '#', :id => 'link_create', :class => 'link_create')%>
 		<%end%>
